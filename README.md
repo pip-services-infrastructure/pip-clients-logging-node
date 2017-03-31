@@ -107,7 +107,7 @@ client.read(
         skip: 0, 
         take: 100
     },
-    function(err, activities) {
+    function(err, page) {
     ...    
     }
 );
