@@ -1,3 +1,3 @@
 export { DirectLogger } from './DirectLogger';
-export { RestLogger } from './RestLogger';
+export { HttpLogger } from './HttpLogger';
 export { SenecaLogger } from './SenecaLogger';

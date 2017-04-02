@@ -4,7 +4,7 @@ let _ = require('lodash');
 let os = require('os');
 const pip_services_commons_node_1 = require("pip-services-commons-node");
 const pip_services_net_node_1 = require("pip-services-net-node");
-class LoggingRestClientV1 extends pip_services_net_node_1.CommandableRestClient {
+class LoggingHttpClientV1 extends pip_services_net_node_1.CommandableHttpClient {
     constructor(config) {
         super('logging');
         if (config != null)
@@ -44,5 +44,5 @@ class LoggingRestClientV1 extends pip_services_net_node_1.CommandableRestClient 
         this.callCommand('clear', correlationId, null, callback);
     }
 }
-exports.LoggingRestClientV1 = LoggingRestClientV1;
-//# sourceMappingURL=LoggingRestClientV1.js.map
+exports.LoggingHttpClientV1 = LoggingHttpClientV1;
+//# sourceMappingURL=LoggingHttpClientV1.js.map

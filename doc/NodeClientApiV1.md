@@ -17,7 +17,7 @@ and provides high-level API to access the microservice for simple and productive
     - [writeMessage()](#operation6)
     - [writeMessages()](#operation7)
     - [clear()](#operation8)
-* [LoggingRestClientV1 class](#client_rest)
+* [LoggingHttpClientV1 class](#client_http)
 * [LoggingSenecaClientV1 class](#client_seneca)
 * [LoggingDirectClientV1 class](#client_direct)
 * [LoggingNullClientV1 class](#client_null)
@@ -65,7 +65,7 @@ var config = {
 };
 
 // Create the client instance
-var client = sdk.LoggingRestClientV1(config);
+var client = sdk.LoggingHttpClientV1(config);
 
 // Open client connection to the microservice
 client.open(null, function(err) {
@@ -260,14 +260,14 @@ Clears all logged messages and errors
 - callback: (err, event) => void - callback function
   - err: Error - occured error or null for success
 
-## <a name="client_rest"></a> LoggingRestClientV1 class
+## <a name="client_http"></a> LoggingHttpClientV1 class
 
-LoggingRestClientV1 is a client that implements HTTP/REST protocol
+LoggingHttpClientV1 is a client that implements HTTP protocol
 
 ```javascript
-class LoggingRestClientV1 extends CommandableRestClient implements ILoggingClientV1 {
+class LoggingHttpClientV1 extends CommandableHttpClient implements ILoggingClientV1 {
     constructor(config?: any);
-    setReferences(refs);
+    setReferences(references);
     open(correlationId, callback);
     close(correlationIdm callback);
     readMessages(correlationId, filter, paging, callback);
@@ -290,7 +290,7 @@ LoggingSenecaClientV1 is a client that implements Seneca protocol
 ```javascript
 class LoggingSenecaClientV1 extends CommandableSenecaClient implements ILoggingClientV1 {
     constructor(config?: any);        
-    setReferences(refs);
+    setReferences(references);
     open(correlationId, callback);
     close(correlationId, callback);
     readMessages(correlationId, filter, paging, callback);
@@ -315,7 +315,7 @@ It can be used in monolythic deployments when multiple microservices run in the 
 ```javascript
 class LoggingDirectClientV1 extends DirectClient implements ILoggingClientV1 {
     constructor();        
-    setReferences(refs);
+    setReferences(references);
     open(correlationId, callback);
     close(correlationId, callback);
     readMessages(correlationId, filter, paging, callback);
@@ -334,7 +334,7 @@ It can be useful in testing scenarios to cut dependencies on external microservi
 ```javascript
 class LoggingNullClientV1 implements ILoggingClientV1 {
     constructor();        
-    setReferences(refs);
+    setReferences(references);
     open(correlationId, callback);
     close(correlationId, callback);
     readMessages(correlationId, filter, paging, callback);

@@ -1,10 +1,10 @@
 import { FilterParams } from 'pip-services-commons-node';
 import { PagingParams } from 'pip-services-commons-node';
 import { DataPage } from 'pip-services-commons-node';
-import { CommandableRestClient } from 'pip-services-net-node';
+import { CommandableHttpClient } from 'pip-services-net-node';
 import { LogMessageV1 } from './LogMessageV1';
 import { ILoggingClientV1 } from './ILoggingClientV1';
-export declare class LoggingRestClientV1 extends CommandableRestClient implements ILoggingClientV1 {
+export declare class LoggingHttpClientV1 extends CommandableHttpClient implements ILoggingClientV1 {
     constructor(config?: any);
     readMessages(correlationId: string, filter: FilterParams, paging: PagingParams, callback: (err: any, page: DataPage<LogMessageV1>) => void): void;
     readErrors(correlationId: string, filter: FilterParams, paging: PagingParams, callback: (err: any, page: DataPage<LogMessageV1>) => void): void;

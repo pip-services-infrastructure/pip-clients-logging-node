@@ -60,7 +60,7 @@ var config = {
 Instantiate the client and open connection to the microservice
 ```javascript
 // Create the client instance
-var client = sdk.LoggingRestClientV1(config);
+var client = sdk.LoggingHttpClientV1(config);
 
 // Connect to the microservice
 client.open(null, function(err) {

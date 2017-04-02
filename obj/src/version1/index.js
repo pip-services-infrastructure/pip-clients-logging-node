@@ -2,8 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var LogMessageV1_1 = require("./LogMessageV1");
 exports.LogMessageV1 = LogMessageV1_1.LogMessageV1;
-var LoggingRestClientV1_1 = require("./LoggingRestClientV1");
-exports.LoggingRestClientV1 = LoggingRestClientV1_1.LoggingRestClientV1;
+var LoggingHttpClientV1_1 = require("./LoggingHttpClientV1");
+exports.LoggingHttpClientV1 = LoggingHttpClientV1_1.LoggingHttpClientV1;
 //export { LoggingLambdaClientV1 } from './LoggingLambdaClientV1';
 var LoggingSenecaClientV1_1 = require("./LoggingSenecaClientV1");
 exports.LoggingSenecaClientV1 = LoggingSenecaClientV1_1.LoggingSenecaClientV1;

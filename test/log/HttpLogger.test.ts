@@ -8,57 +8,55 @@ import { ConsoleLogger } from 'pip-services-commons-node';
 
 import { LoggingMemoryPersistence } from 'pip-services-logging-node';
 import { LoggingController } from 'pip-services-logging-node';
-import { LoggingRestServiceV1 } from 'pip-services-logging-node';
-import { ILoggingClientV1 } from '../../src/version1/ILoggingClientV1';
-import { LoggingRestClientV1 } from '../../src/version1/LoggingRestClientV1';
-import { LoggingClientFixtureV1 } from './LoggingClientFixtureV1';
+import { LoggingHttpServiceV1 } from 'pip-services-logging-node';
+import { HttpLogger } from '../../src/log/HttpLogger';
+import { LoggerFixture } from './LoggerFixture';
 
-var restConfig = ConfigParams.fromTuples(
+var httpConfig = ConfigParams.fromTuples(
     "connection.protocol", "http",
     "connection.host", "localhost",
     "connection.port", 3000
 );
 
-suite('LoggingRestClientV1', ()=> {
-    let service: LoggingRestServiceV1;
-    let client: LoggingRestClientV1;
-    let fixture: LoggingClientFixtureV1;
+suite('LoggingHttpClientV1', ()=> {
+    let service: LoggingHttpServiceV1;
+    let logger: HttpLogger;
+    let fixture: LoggerFixture;
 
     suiteSetup((done) => {
-        let logger = new ConsoleLogger();
+        let consoleLogger = new ConsoleLogger();
         let persistence = new LoggingMemoryPersistence();
         let controller = new LoggingController();
 
-        service = new LoggingRestServiceV1();
-        service.configure(restConfig);
+        service = new LoggingHttpServiceV1();
+        service.configure(httpConfig);
 
         let references: References = References.fromTuples(
-            new Descriptor('pip-services-commons', 'logger', 'console', 'default', '1.0'), logger,
+            new Descriptor('pip-services-commons', 'logger', 'console', 'default', '1.0'), consoleLogger,
             new Descriptor('pip-services-logging', 'persistence', 'memory', 'default', '1.0'), persistence,
             new Descriptor('pip-services-logging', 'controller', 'default', 'default', '1.0'), controller,
-            new Descriptor('pip-services-logging', 'service', 'rest', 'default', '1.0'), service
+            new Descriptor('pip-services-logging', 'service', 'http', 'default', '1.0'), service
         );
         controller.setReferences(references);
         service.setReferences(references);
 
-        client = new LoggingRestClientV1();
-        client.setReferences(references);
-        client.configure(restConfig);
+        logger = new HttpLogger();
+        logger.configure(httpConfig);
 
-        fixture = new LoggingClientFixtureV1(client);
+        fixture = new LoggerFixture(logger, controller);
 
         service.open(null, (err) => {
-            client.open(null, done);
+            logger.open(null, done);
         });
     });
     
     suiteTeardown((done) => {
-        client.close(null);
+        logger.close(null);
         service.close(null, done);
     });
 
-    test('CRUD Operations', (done) => {
-        fixture.testCrudOperations(done);
+    test('Simple logging', (done) => {
+        fixture.testSimpleLogging(done);
     });
 
 });
