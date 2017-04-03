@@ -7,16 +7,12 @@ and provides high-level API to access the microservice for simple and productive
 * [Installation](#install)
 * [Getting started](#get_started)
 * [LogMessageV1 class](#class1)
-* [DataPage<LogMessageV1> class](#class2)
 * [ILoggingClientV1 interface](#interface)
-    - [init()](#operation1)
-    - [open()](#operation2)
-    - [close()](#operation3)
-    - [readMessages()](#operation4)
-    - [readErrors()](#operation5)
-    - [writeMessage()](#operation6)
-    - [writeMessages()](#operation7)
-    - [clear()](#operation8)
+    - [readMessages()](#operation1)
+    - [readErrors()](#operation2)
+    - [writeMessage()](#operation3)
+    - [writeMessages()](#operation4)
+    - [clear()](#operation5)
 * [LoggingHttpClientV1 class](#client_http)
 * [LoggingSenecaClientV1 class](#client_seneca)
 * [LoggingDirectClientV1 class](#client_direct)
@@ -58,7 +54,7 @@ var sdk = new require('pip-clients-logging-node');
 // Client configuration
 var config = {
     connection: {
-        type: 'http',
+        protocol: 'http',
         host: 'localhost', 
         port: 8001
     }
@@ -137,14 +133,6 @@ Represents a record of a system activity performed in the past
 - error: Object - error object
 - message: string - descriptive message
 
-### <a name="class2"></a> DataPage<LogMessageV1> class
-
-Represents a paged result with subset of requested LogMessageV1 objects
-
-**Properties:**
-- data: [LogMessageV1] - array of retrieved LogMessageV1 page
-- count: int - total number of objects in retrieved resultset
-
 ## <a name="interface"></a> ILoggingClientV1 interface
 
 If you are using Typescript, you can use ILoggingClientV1 as a common interface across all client implementations. 
@@ -153,9 +141,6 @@ all methods defined in this interface are implemented by all client classes.
 
 ```javascript
 interface ILoggingClientV1 {
-    setReferences(references);
-    open(correlationId, callback);
-    close(correlationIdm callback);
     readMessages(correlationId, filter, paging, callback);
     readErrors(correlationId, filter, paging, callback);
     writeMessage(correlationId, message, callback);
@@ -164,33 +149,7 @@ interface ILoggingClientV1 {
 }
 ```
 
-### <a name="operation1"></a> setReferences(references)
-
-Initializes client references. This method is optional. It is used to set references 
-to logger or performance counters.
-
-**Arguments:**
-- references: IReferences - references to other components
-
-### <a name="operation2"></a> open(correlationId, callback)
-
-Opens connection to the microservice
-
-**Arguments:**
-- correlationId: string - id that uniquely identifies transaction
-- callback: (err) => void - callback function
-  - err - Error or null is no error occured
-
-### <a name="operation3"></a> close(correlationId, callback)
-
-Closes connection to the microservice
-
-**Arguments:**
-- correlationId: string - id that uniquely identifies transaction
-- callback: (err) => void - callback function
-  - err - Error or null is no error occured
-
-### <a name="operation4"></a> readMessages(correlationId, filter, paging, callback)
+### <a name="operation1"></a> readMessages(correlationId, filter, paging, callback)
 
 Retrieves logged messages by specified criteria
 
@@ -210,7 +169,7 @@ Retrieves logged messages by specified criteria
   - err: Error - occured error or null for success
   - page: DataPage<LogMessageV1> - retrieved LogMessageV1 objects in paged format
 
-### <a name="operation5"></a> readErrors(correlationId, filter, paging, callback)
+### <a name="operation2"></a> readErrors(correlationId, filter, paging, callback)
 
 Retrieves logged errors by specified criteria
 
@@ -230,7 +189,7 @@ Retrieves logged errors by specified criteria
   - err: Error - occured error or null for success
   - page: DataPage<LogMessageV1> - retrieved LogMessageV1 objects in paged format
 
-### <a name="operation6"></a> writeMessage(correlationId, message, callback)
+### <a name="operation3"></a> writeMessage(correlationId, message, callback)
 
 Log message
 
@@ -241,7 +200,7 @@ Log message
   - err: Error - occured error or null for success
   - event: LogMessageV1 - logged system event
  
-### <a name="operation7"></a> writeMessages(correlationId, messages, callback)
+### <a name="operation4"></a> writeMessages(correlationId, messages, callback)
 
 Log multiple messages
 
@@ -251,7 +210,7 @@ Log multiple messages
 - callback: (err, event) => void - callback function
   - err: Error - occured error or null for success
 
-### <a name="operation8"></a> clear(correlationId, callback)
+### <a name="operation5"></a> clear(correlationId, callback)
 
 Clears all logged messages and errors
 
@@ -289,7 +248,7 @@ LoggingSenecaClientV1 is a client that implements Seneca protocol
 
 ```javascript
 class LoggingSenecaClientV1 extends CommandableSenecaClient implements ILoggingClientV1 {
-    constructor(config?: any);        
+    constructor(config?: any);
     setReferences(references);
     open(correlationId, callback);
     close(correlationId, callback);
@@ -303,7 +262,7 @@ class LoggingSenecaClientV1 extends CommandableSenecaClient implements ILoggingC
 
 **Constructor config properties:** 
 - connection: object - (optional) Seneca transport configuration options. See http://senecajs.org/api/ for details.
-  - type: string - Seneca transport type 
+  - protocol: string - Seneca transport type 
   - host: string - IP address/hostname binding (default is '0.0.0.0')
   - port: number - Seneca port number
 
@@ -314,7 +273,7 @@ It can be used in monolythic deployments when multiple microservices run in the 
 
 ```javascript
 class LoggingDirectClientV1 extends DirectClient implements ILoggingClientV1 {
-    constructor();        
+    constructor();
     setReferences(references);
     open(correlationId, callback);
     close(correlationId, callback);
@@ -333,10 +292,7 @@ It can be useful in testing scenarios to cut dependencies on external microservi
 
 ```javascript
 class LoggingNullClientV1 implements ILoggingClientV1 {
-    constructor();        
-    setReferences(references);
-    open(correlationId, callback);
-    close(correlationId, callback);
+    constructor();
     readMessages(correlationId, filter, paging, callback);
     readErrors(correlationId, filter, paging, callback);
     writeMessage(correlationId, event, callback);
