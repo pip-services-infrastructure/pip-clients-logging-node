@@ -228,7 +228,7 @@ class LoggingHttpClientV1 extends CommandableHttpClient implements ILoggingClien
     constructor(config?: any);
     setReferences(references);
     open(correlationId, callback);
-    close(correlationIdm callback);
+    close(correlationId, callback);
     readMessages(correlationId, filter, paging, callback);
     writeMessage(correlationId, event, callback);
     writeMessages(correlationId, messages, callback);
