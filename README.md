@@ -77,8 +77,8 @@ client.open(null, function(err) {
 
 Now the client is ready to perform operations
 ```javascript
-// Log system event
-client.write(
+// Log message
+client.writeMessage(
     null,
     { 
         type: 'restart',
@@ -94,8 +94,8 @@ client.write(
 ```javascript
 var now = new Date();
 
-// Get the list system events
-client.read(
+// Get the messages for server 1 for the last day
+client.readMessages(
     null,
     {
         from: new Date(now.getTime() - 24 * 3600 * 1000),
