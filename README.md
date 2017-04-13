@@ -52,7 +52,7 @@ var config = {
     connection: {
         protocol: 'http',
         host: 'localhost', 
-        port: 8003
+        port: 8080
     }
 };
 ```
