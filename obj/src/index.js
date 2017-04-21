@@ -5,6 +5,6 @@ function __export(m) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(require("./log"));
 __export(require("./version1"));
-var LoggingFactory_1 = require("./build/LoggingFactory");
-exports.LoggingFactory = LoggingFactory_1.LoggingFactory;
+var LoggingClientFactory_1 = require("./build/LoggingClientFactory");
+exports.LoggingClientFactory = LoggingClientFactory_1.LoggingClientFactory;
 //# sourceMappingURL=index.js.map

@@ -1,6 +1,6 @@
 import { Descriptor } from 'pip-services-commons-node';
 import { Factory } from 'pip-services-commons-node';
-export declare class LoggingFactory extends Factory {
+export declare class LoggingClientFactory extends Factory {
     static Descriptor: Descriptor;
     static DirectLoggerDescriptor: Descriptor;
     static HttpLoggerDescriptor: Descriptor;
