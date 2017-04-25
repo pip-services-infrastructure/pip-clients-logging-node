@@ -6,10 +6,10 @@ import { DataPage } from 'pip-services-commons-node';
 import { DirectClient } from 'pip-services-net-node';
 
 import { ILoggingClientV1 } from './ILoggingClientV1';
-import { ILoggingBusinessLogic } from 'pip-services-logging-node';
+//import { ILoggingController } from 'pip-services-logging-node';
 import { LogMessageV1 } from './LogMessageV1';
 
-export class LoggingDirectClientV1 extends DirectClient<ILoggingBusinessLogic> implements ILoggingClientV1 {
+export class LoggingDirectClientV1 extends DirectClient<any> implements ILoggingClientV1 {
             
     public constructor() {
         super();
