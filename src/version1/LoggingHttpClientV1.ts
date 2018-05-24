@@ -14,7 +14,7 @@ import { ILoggingClientV1 } from './ILoggingClientV1';
 export class LoggingHttpClientV1 extends CommandableHttpClient implements ILoggingClientV1 {
 
     constructor(config?: any) {
-        super('logging');
+        super('v1/logging');
 
         if (config != null)
             this.configure(ConfigParams.fromValue(config));
