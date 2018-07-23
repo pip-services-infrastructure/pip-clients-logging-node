@@ -6,7 +6,8 @@ import { ConfigParams } from 'pip-services-commons-node';
 import { References } from 'pip-services-commons-node';
 import { ConsoleLogger } from 'pip-services-commons-node';
 
-import { LoggingMemoryPersistence } from 'pip-services-logging-node';
+import { LoggingMessagesMemoryPersistence } from 'pip-services-logging-node';
+import { LoggingErrorsMemoryPersistence } from 'pip-services-logging-node';
 import { LoggingController } from 'pip-services-logging-node';
 import { ILoggingClientV1 } from '../../src/version1/ILoggingClientV1';
 import { LoggingDirectClientV1 } from '../../src/version1/LoggingDirectClientV1';
@@ -18,12 +19,14 @@ suite('LoggingDirectClientV1', ()=> {
 
     suiteSetup((done) => {
         let logger = new ConsoleLogger();
-        let persistence = new LoggingMemoryPersistence();
+        let messagesPersistence = new LoggingMessagesMemoryPersistence();
+        let errorsPersistence = new LoggingErrorsMemoryPersistence();
         let controller = new LoggingController();
 
         let references: References = References.fromTuples(
             new Descriptor('pip-services-commons', 'logger', 'console', 'default', '1.0'), logger,
-            new Descriptor('pip-services-logging', 'persistence', 'memory', 'default', '1.0'), persistence,
+            new Descriptor('pip-services-logging', 'persistence-messages', 'memory', 'default', '1.0'), messagesPersistence,
+            new Descriptor('pip-services-logging', 'persistence-errors', 'memory', 'default', '1.0'), errorsPersistence,
             new Descriptor('pip-services-logging', 'controller', 'default', 'default', '1.0'), controller,
         );
         controller.setReferences(references);
