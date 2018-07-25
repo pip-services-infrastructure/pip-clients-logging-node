@@ -11,6 +11,8 @@ import { ErrorDescription } from 'pip-services-commons-node';
 import { ErrorDescriptionFactory } from 'pip-services-commons-node';
 import { LogLevel } from 'pip-services-commons-node';
 import { Logger } from 'pip-services-commons-node';
+import { Descriptor } from 'pip-services-commons-node';
+import { ContextInfo } from 'pip-services-commons-node';
 
 import { LogMessageV1 } from '../version1/LogMessageV1';
 import { ILoggingClientV1 } from '../version1/ILoggingClientV1';
@@ -22,6 +24,7 @@ export abstract class AbstractLogger extends Logger implements IReconfigurable, 
     protected _cache: LogMessageV1[] = [];
     protected _interval: number = AbstractLogger._defaultInterval;
     protected _dumpCurl: any;
+    protected _source: string;
 
     public constructor(client: ILoggingClientV1) {
         super();
@@ -30,13 +33,19 @@ export abstract class AbstractLogger extends Logger implements IReconfigurable, 
     }
 
     public configure(config: ConfigParams): void {
+        super.configure(config);
         (this._client as any).configure(config);
-    	this._interval = config.getAsLongWithDefault("interval", this._interval);
+        this._interval = config.getAsLongWithDefault("interval", this._interval);
+        this._source = config.getAsStringWithDefault("source", this._source);
         this._dumpCurl = _.debounce(() => { this.dump() }, this._interval);
     }
 	
     public setReferences(references: IReferences): void {
         (this._client as any).setReferences(references);
+        let contextInfo = references.getOneOptional<ContextInfo>(
+            new Descriptor("pip-services", "context-info", "default", "*", "1.0"));
+        if (contextInfo != null && this._source == null)
+            this._source = contextInfo.name;
     }
 
     public isOpened(): boolean {
@@ -49,11 +58,13 @@ export abstract class AbstractLogger extends Logger implements IReconfigurable, 
 
     public close(correlationId: string, callback?: (err: any) => void): void {
         (this._client as any).close(correlationId, callback);
+        this.dump();
     }
 
 	protected write(level: LogLevel, correlationId: string, ex: Error, message: string): void {
 		let error: ErrorDescription = ex != null ? ErrorDescriptionFactory.create(ex) : null;
-        let source: string = os.hostname(); // Todo: add current module name name
+        // let source: string = os.hostname(); // Todo: add current module name name
+        let source: string = this._source || "unknown";
 		let logMessage: LogMessageV1 = new LogMessageV1(level, source, correlationId, error, message);
 		
         this._cache.push(logMessage);
