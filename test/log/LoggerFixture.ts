@@ -2,14 +2,14 @@ let assert = require('chai').assert;
 
 import { ConfigParams } from 'pip-services-commons-node';
 import { LogLevel } from 'pip-services-commons-node';
-import { ILoggingBusinessLogic } from 'pip-services-logging-node';
+import { ILoggingController } from 'pip-services-logging-node';
 import { AbstractLogger } from '../../src/log/AbstractLogger';
 
 export class LoggerFixture {
     private _logger: AbstractLogger;
-    private _controller: ILoggingBusinessLogic;
+    private _controller: ILoggingController;
 
-    public constructor(logger: AbstractLogger, controller: ILoggingBusinessLogic) {
+    public constructor(logger: AbstractLogger, controller: ILoggingController) {
         this._logger = logger;
         this._controller = controller;
     }

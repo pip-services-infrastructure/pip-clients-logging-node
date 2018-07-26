@@ -13,6 +13,7 @@ export declare abstract class AbstractLogger extends Logger implements IReconfig
     protected _cache: LogMessageV1[];
     protected _interval: number;
     protected _dumpCurl: any;
+    protected _source: string;
     constructor(client: ILoggingClientV1);
     configure(config: ConfigParams): void;
     setReferences(references: IReferences): void;
