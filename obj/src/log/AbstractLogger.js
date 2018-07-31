@@ -38,6 +38,9 @@ class AbstractLogger extends pip_services_commons_node_2.Logger {
         this.dump();
     }
     write(level, correlationId, ex, message) {
+        if (this._level < level) {
+            return;
+        }
         let error = ex != null ? pip_services_commons_node_1.ErrorDescriptionFactory.create(ex) : null;
         // let source: string = os.hostname(); // Todo: add current module name name
         let source = this._source || "unknown";
