@@ -62,6 +62,10 @@ export abstract class AbstractLogger extends Logger implements IReconfigurable, 
     }
 
 	protected write(level: LogLevel, correlationId: string, ex: Error, message: string): void {
+        if (this._level < level) {
+            return;
+        }
+
 		let error: ErrorDescription = ex != null ? ErrorDescriptionFactory.create(ex) : null;
         // let source: string = os.hostname(); // Todo: add current module name name
         let source: string = this._source || "unknown";
