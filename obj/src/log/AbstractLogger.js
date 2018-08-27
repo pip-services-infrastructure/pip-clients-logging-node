@@ -3,10 +3,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 let _ = require('lodash');
 let os = require('os');
 const pip_services_commons_node_1 = require("pip-services-commons-node");
+const pip_services_components_node_1 = require("pip-services-components-node");
 const pip_services_commons_node_2 = require("pip-services-commons-node");
-const pip_services_commons_node_3 = require("pip-services-commons-node");
 const LogMessageV1_1 = require("../version1/LogMessageV1");
-class AbstractLogger extends pip_services_commons_node_2.Logger {
+class AbstractLogger extends pip_services_components_node_1.Logger {
     constructor(client) {
         super();
         this._cache = [];
@@ -23,11 +23,11 @@ class AbstractLogger extends pip_services_commons_node_2.Logger {
     }
     setReferences(references) {
         this._client.setReferences(references);
-        let contextInfo = references.getOneOptional(new pip_services_commons_node_3.Descriptor("pip-services", "context-info", "default", "*", "1.0"));
+        let contextInfo = references.getOneOptional(new pip_services_commons_node_2.Descriptor("pip-services", "context-info", "default", "*", "1.0"));
         if (contextInfo != null && this._source == null)
             this._source = contextInfo.name;
     }
-    isOpened() {
+    isOpen() {
         return this._client.isOpened();
     }
     open(correlationId, callback) {

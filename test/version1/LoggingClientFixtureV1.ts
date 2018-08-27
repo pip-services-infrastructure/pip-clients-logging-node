@@ -2,7 +2,7 @@ let _ = require('lodash');
 let async = require('async');
 let assert = require('chai').assert;
 
-import { LogLevel } from 'pip-services-commons-node';
+import { LogLevel } from 'pip-services-components-node';
 import { ErrorDescriptionFactory } from 'pip-services-commons-node';
 import { FilterParams } from 'pip-services-commons-node';
 

@@ -1,7 +1,7 @@
 let assert = require('chai').assert;
 
 import { ConfigParams } from 'pip-services-commons-node';
-import { LogLevel } from 'pip-services-commons-node';
+import { LogLevel } from 'pip-services-components-node';
 import { ILoggingController } from 'pip-services-logging-node';
 import { AbstractLogger } from '../../src/log/AbstractLogger';
 

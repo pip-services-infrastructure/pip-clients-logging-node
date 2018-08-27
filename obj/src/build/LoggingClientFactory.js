@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const pip_services_commons_node_1 = require("pip-services-commons-node");
-const pip_services_commons_node_2 = require("pip-services-commons-node");
+const pip_services_components_node_1 = require("pip-services-components-node");
 const DirectLogger_1 = require("../log/DirectLogger");
 const HttpLogger_1 = require("../log/HttpLogger");
 const SenecaLogger_1 = require("../log/SenecaLogger");
@@ -9,7 +9,7 @@ const LoggingNullClientV1_1 = require("../version1/LoggingNullClientV1");
 const LoggingDirectClientV1_1 = require("../version1/LoggingDirectClientV1");
 const LoggingHttpClientV1_1 = require("../version1/LoggingHttpClientV1");
 const LoggingSenecaClientV1_1 = require("../version1/LoggingSenecaClientV1");
-class LoggingClientFactory extends pip_services_commons_node_2.Factory {
+class LoggingClientFactory extends pip_services_components_node_1.Factory {
     constructor() {
         super();
         this.registerAsType(LoggingClientFactory.DirectLoggerDescriptor, DirectLogger_1.DirectLogger);

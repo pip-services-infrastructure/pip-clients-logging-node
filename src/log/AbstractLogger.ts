@@ -9,10 +9,10 @@ import { IReferenceable } from 'pip-services-commons-node';
 import { IOpenable } from 'pip-services-commons-node';
 import { ErrorDescription } from 'pip-services-commons-node';
 import { ErrorDescriptionFactory } from 'pip-services-commons-node';
-import { LogLevel } from 'pip-services-commons-node';
-import { Logger } from 'pip-services-commons-node';
+import { LogLevel } from 'pip-services-components-node';
+import { Logger } from 'pip-services-components-node';
 import { Descriptor } from 'pip-services-commons-node';
-import { ContextInfo } from 'pip-services-commons-node';
+import { ContextInfo } from 'pip-services-components-node';
 
 import { LogMessageV1 } from '../version1/LogMessageV1';
 import { ILoggingClientV1 } from '../version1/ILoggingClientV1';
@@ -48,7 +48,7 @@ export abstract class AbstractLogger extends Logger implements IReconfigurable, 
             this._source = contextInfo.name;
     }
 
-    public isOpened(): boolean {
+    public isOpen(): boolean {
         return (this._client as any).isOpened();
     }
 

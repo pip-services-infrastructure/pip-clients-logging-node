@@ -1,7 +1,7 @@
 import { FilterParams } from 'pip-services-commons-node';
 import { PagingParams } from 'pip-services-commons-node';
 import { DataPage } from 'pip-services-commons-node';
-import { CommandableSenecaClient } from 'pip-services-net-node';
+import { CommandableSenecaClient } from 'pip-services-seneca-node';
 import { LogMessageV1 } from './LogMessageV1';
 import { ILoggingClientV1 } from './ILoggingClientV1';
 export declare class LoggingSenecaClientV1 extends CommandableSenecaClient implements ILoggingClientV1 {

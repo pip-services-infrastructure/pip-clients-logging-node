@@ -3,8 +3,8 @@ import { IReconfigurable } from 'pip-services-commons-node';
 import { IReferences } from 'pip-services-commons-node';
 import { IReferenceable } from 'pip-services-commons-node';
 import { IOpenable } from 'pip-services-commons-node';
-import { LogLevel } from 'pip-services-commons-node';
-import { Logger } from 'pip-services-commons-node';
+import { LogLevel } from 'pip-services-components-node';
+import { Logger } from 'pip-services-components-node';
 import { LogMessageV1 } from '../version1/LogMessageV1';
 import { ILoggingClientV1 } from '../version1/ILoggingClientV1';
 export declare abstract class AbstractLogger extends Logger implements IReconfigurable, IReferenceable, IOpenable {
@@ -17,7 +17,7 @@ export declare abstract class AbstractLogger extends Logger implements IReconfig
     constructor(client: ILoggingClientV1);
     configure(config: ConfigParams): void;
     setReferences(references: IReferences): void;
-    isOpened(): boolean;
+    isOpen(): boolean;
     open(correlationId: string, callback?: (err: any) => void): void;
     close(correlationId: string, callback?: (err: any) => void): void;
     protected write(level: LogLevel, correlationId: string, ex: Error, message: string): void;

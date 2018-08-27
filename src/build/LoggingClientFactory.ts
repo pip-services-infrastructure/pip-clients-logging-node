@@ -1,5 +1,5 @@
 import { Descriptor } from 'pip-services-commons-node';
-import { Factory } from 'pip-services-commons-node';
+import { Factory } from 'pip-services-components-node';
 
 import { DirectLogger } from '../log/DirectLogger';
 import { HttpLogger } from '../log/HttpLogger';
