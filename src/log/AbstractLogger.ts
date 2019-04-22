@@ -1,18 +1,18 @@
 let _ = require('lodash');
 let os = require('os');
 
-import { ConfigParams } from 'pip-services-commons-node';
-import { IConfigurable } from 'pip-services-commons-node';
-import { IReconfigurable } from 'pip-services-commons-node';
-import { IReferences } from 'pip-services-commons-node';
-import { IReferenceable } from 'pip-services-commons-node';
-import { IOpenable } from 'pip-services-commons-node';
-import { ErrorDescription } from 'pip-services-commons-node';
-import { ErrorDescriptionFactory } from 'pip-services-commons-node';
-import { LogLevel } from 'pip-services-components-node';
-import { Logger } from 'pip-services-components-node';
-import { Descriptor } from 'pip-services-commons-node';
-import { ContextInfo } from 'pip-services-components-node';
+import { ConfigParams } from 'pip-services3-commons-node';
+import { IConfigurable } from 'pip-services3-commons-node';
+import { IReconfigurable } from 'pip-services3-commons-node';
+import { IReferences } from 'pip-services3-commons-node';
+import { IReferenceable } from 'pip-services3-commons-node';
+import { IOpenable } from 'pip-services3-commons-node';
+import { ErrorDescription } from 'pip-services3-commons-node';
+import { ErrorDescriptionFactory } from 'pip-services3-commons-node';
+import { LogLevel } from 'pip-services3-components-node';
+import { Logger } from 'pip-services3-components-node';
+import { Descriptor } from 'pip-services3-commons-node';
+import { ContextInfo } from 'pip-services3-components-node';
 
 import { LogMessageV1 } from '../version1/LogMessageV1';
 import { ILoggingClientV1 } from '../version1/ILoggingClientV1';

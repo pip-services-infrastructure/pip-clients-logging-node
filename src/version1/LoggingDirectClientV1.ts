@@ -1,9 +1,9 @@
-import { IReferences } from 'pip-services-commons-node';
-import { Descriptor } from 'pip-services-commons-node';
-import { FilterParams } from 'pip-services-commons-node';
-import { PagingParams} from 'pip-services-commons-node';
-import { DataPage } from 'pip-services-commons-node';
-import { DirectClient } from 'pip-services-rpc-node';
+import { IReferences } from 'pip-services3-commons-node';
+import { Descriptor } from 'pip-services3-commons-node';
+import { FilterParams } from 'pip-services3-commons-node';
+import { PagingParams} from 'pip-services3-commons-node';
+import { DataPage } from 'pip-services3-commons-node';
+import { DirectClient } from 'pip-services3-rpc-node';
 
 import { ILoggingClientV1 } from './ILoggingClientV1';
 //import { ILoggingController } from 'pip-services-logging-node';

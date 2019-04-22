@@ -1,6 +1,6 @@
-import { FilterParams } from 'pip-services-commons-node';
-import { PagingParams } from 'pip-services-commons-node';
-import { DataPage } from 'pip-services-commons-node';
+import { FilterParams } from 'pip-services3-commons-node';
+import { PagingParams } from 'pip-services3-commons-node';
+import { DataPage } from 'pip-services3-commons-node';
 import { LogMessageV1 } from './LogMessageV1';
 export interface ILoggingClientV1 {
     readMessages(correlationId: string, filter: FilterParams, paging: PagingParams, callback: (err: any, page: DataPage<LogMessageV1>) => void): void;

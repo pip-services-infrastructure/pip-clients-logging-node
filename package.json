@@ -37,11 +37,10 @@
         "rebenchmark": "tsc && matcha -R clean -I tdd ./obj/benchmark/run.js"
     },
     "dependencies": {
-        "pip-services-commons-node": "^3.0.0",
-        "pip-services-components-node": "^3.0.0",
-        "pip-services-rpc-node": "^3.0.0",
-        "pip-services-seneca-node": "^3.0.0",
-        "pip-services-aws-node": "^3.0.0"
+        "pip-services3-commons-node": "^3.0.0",
+        "pip-services3-components-node": "^3.0.0",
+        "pip-services3-rpc-node": "^3.0.0",
+        "pip-services3-aws-node": "^3.0.0"
     },
     "devDependencies": {
         "@types/node": "*",
@@ -51,7 +50,6 @@
         "@types/mocha": "*",
         "@types/mongodb": "^2.1.38",
         "@types/mongoose": "^4.7.4",
-        "seneca": "^3.3.0",
         "restify": "^4.3.0",
         "chai": "*",
         "matcha": "*",

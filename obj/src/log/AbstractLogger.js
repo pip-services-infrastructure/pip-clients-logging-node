@@ -2,11 +2,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 let _ = require('lodash');
 let os = require('os');
-const pip_services_commons_node_1 = require("pip-services-commons-node");
-const pip_services_components_node_1 = require("pip-services-components-node");
-const pip_services_commons_node_2 = require("pip-services-commons-node");
+const pip_services3_commons_node_1 = require("pip-services3-commons-node");
+const pip_services3_components_node_1 = require("pip-services3-components-node");
+const pip_services3_commons_node_2 = require("pip-services3-commons-node");
 const LogMessageV1_1 = require("../version1/LogMessageV1");
-class AbstractLogger extends pip_services_components_node_1.Logger {
+class AbstractLogger extends pip_services3_components_node_1.Logger {
     constructor(client) {
         super();
         this._cache = [];
@@ -23,7 +23,7 @@ class AbstractLogger extends pip_services_components_node_1.Logger {
     }
     setReferences(references) {
         this._client.setReferences(references);
-        let contextInfo = references.getOneOptional(new pip_services_commons_node_2.Descriptor("pip-services", "context-info", "default", "*", "1.0"));
+        let contextInfo = references.getOneOptional(new pip_services3_commons_node_2.Descriptor("pip-services", "context-info", "default", "*", "1.0"));
         if (contextInfo != null && this._source == null)
             this._source = contextInfo.name;
     }
@@ -41,7 +41,7 @@ class AbstractLogger extends pip_services_components_node_1.Logger {
         if (this._level < level) {
             return;
         }
-        let error = ex != null ? pip_services_commons_node_1.ErrorDescriptionFactory.create(ex) : null;
+        let error = ex != null ? pip_services3_commons_node_1.ErrorDescriptionFactory.create(ex) : null;
         // let source: string = os.hostname(); // Todo: add current module name name
         let source = this._source || "unknown";
         let logMessage = new LogMessageV1_1.LogMessageV1(level, source, correlationId, error, message);

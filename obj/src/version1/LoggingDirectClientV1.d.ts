@@ -1,7 +1,7 @@
-import { FilterParams } from 'pip-services-commons-node';
-import { PagingParams } from 'pip-services-commons-node';
-import { DataPage } from 'pip-services-commons-node';
-import { DirectClient } from 'pip-services-rpc-node';
+import { FilterParams } from 'pip-services3-commons-node';
+import { PagingParams } from 'pip-services3-commons-node';
+import { DataPage } from 'pip-services3-commons-node';
+import { DirectClient } from 'pip-services3-rpc-node';
 import { ILoggingClientV1 } from './ILoggingClientV1';
 import { LogMessageV1 } from './LogMessageV1';
 export declare class LoggingDirectClientV1 extends DirectClient<any> implements ILoggingClientV1 {

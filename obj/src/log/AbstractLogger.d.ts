@@ -1,10 +1,10 @@
-import { ConfigParams } from 'pip-services-commons-node';
-import { IReconfigurable } from 'pip-services-commons-node';
-import { IReferences } from 'pip-services-commons-node';
-import { IReferenceable } from 'pip-services-commons-node';
-import { IOpenable } from 'pip-services-commons-node';
-import { LogLevel } from 'pip-services-components-node';
-import { Logger } from 'pip-services-components-node';
+import { ConfigParams } from 'pip-services3-commons-node';
+import { IReconfigurable } from 'pip-services3-commons-node';
+import { IReferences } from 'pip-services3-commons-node';
+import { IReferenceable } from 'pip-services3-commons-node';
+import { IOpenable } from 'pip-services3-commons-node';
+import { LogLevel } from 'pip-services3-components-node';
+import { Logger } from 'pip-services3-components-node';
 import { LogMessageV1 } from '../version1/LogMessageV1';
 import { ILoggingClientV1 } from '../version1/ILoggingClientV1';
 export declare abstract class AbstractLogger extends Logger implements IReconfigurable, IReferenceable, IOpenable {

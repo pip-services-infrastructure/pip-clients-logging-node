@@ -2,13 +2,13 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 let _ = require('lodash');
 let os = require('os');
-const pip_services_commons_node_1 = require("pip-services-commons-node");
-const pip_services_rpc_node_1 = require("pip-services-rpc-node");
-class LoggingHttpClientV1 extends pip_services_rpc_node_1.CommandableHttpClient {
+const pip_services3_commons_node_1 = require("pip-services3-commons-node");
+const pip_services3_rpc_node_1 = require("pip-services3-rpc-node");
+class LoggingHttpClientV1 extends pip_services3_rpc_node_1.CommandableHttpClient {
     constructor(config) {
         super('v1/logging');
         if (config != null)
-            this.configure(pip_services_commons_node_1.ConfigParams.fromValue(config));
+            this.configure(pip_services3_commons_node_1.ConfigParams.fromValue(config));
     }
     readMessages(correlationId, filter, paging, callback) {
         this.callCommand('read_messages', correlationId, {
