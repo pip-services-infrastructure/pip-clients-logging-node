@@ -58,6 +58,6 @@ class AbstractLogger extends pip_services3_components_node_1.Logger {
         this._cache = [];
     }
 }
-AbstractLogger._defaultInterval = 1000;
 exports.AbstractLogger = AbstractLogger;
+AbstractLogger._defaultInterval = 1000;
 //# sourceMappingURL=AbstractLogger.js.map

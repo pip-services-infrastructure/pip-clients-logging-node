@@ -1,6 +1,6 @@
 {
     "name": "pip-clients-logging-node",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "author": "Conceptual Vision Consulting LLC",
     "description": "Node.js client sdk for pip-services-logging microservice",
     "contributors": [
@@ -48,13 +48,10 @@
         "@types/async": "^2.0.0",
         "@types/chai": "*",
         "@types/mocha": "*",
-        "@types/mongodb": "^2.1.38",
-        "@types/mongoose": "^4.7.4",
         "restify": "^4.3.0",
         "chai": "*",
-        "matcha": "*",
         "mocha": "*",
         "aws-sdk": "*",
-        "pip-services-logging-node": "git+ssh://git@github.com:pip-services-infrastructure/pip-services-logging-node.git"
+        "pip-services-logging-node": "^1.1.0"
     }
 }

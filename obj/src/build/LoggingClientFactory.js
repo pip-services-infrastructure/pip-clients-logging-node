@@ -17,11 +17,11 @@ class LoggingClientFactory extends pip_services3_components_node_1.Factory {
         this.registerAsType(LoggingClientFactory.HttpClientV1Descriptor, LoggingHttpClientV1_1.LoggingHttpClientV1);
     }
 }
+exports.LoggingClientFactory = LoggingClientFactory;
 LoggingClientFactory.Descriptor = new pip_services3_commons_node_1.Descriptor('pip-services-logging', 'factory', 'default', 'default', '1.0');
 LoggingClientFactory.DirectLoggerDescriptor = new pip_services3_commons_node_1.Descriptor('pip-services-logging', 'logger', 'direct', 'default', '1.0');
 LoggingClientFactory.HttpLoggerDescriptor = new pip_services3_commons_node_1.Descriptor('pip-services-logging', 'logger', 'http', 'default', '1.0');
 LoggingClientFactory.NullClientV1Descriptor = new pip_services3_commons_node_1.Descriptor('pip-services-logging', 'client', 'null', 'default', '1.0');
 LoggingClientFactory.DirectClientV1Descriptor = new pip_services3_commons_node_1.Descriptor('pip-services-logging', 'client', 'direct', 'default', '1.0');
 LoggingClientFactory.HttpClientV1Descriptor = new pip_services3_commons_node_1.Descriptor('pip-services-logging', 'client', 'http', 'default', '1.0');
-exports.LoggingClientFactory = LoggingClientFactory;
 //# sourceMappingURL=LoggingClientFactory.js.map
